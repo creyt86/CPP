@@ -1,6 +1,6 @@
-SRCS = phonebook.cpp contact.cpp
-HEAD = phonebook.hpp
-NAME = phonebook
+SRCS = Phonebook.cpp Contact.cpp main.cpp
+HEAD = Phonebook.hpp
+NAME = Phonebook
 
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

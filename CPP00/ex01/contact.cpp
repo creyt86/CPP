@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:27:40 by creyt             #+#    #+#             */
-/*   Updated: 2023/01/27 09:56:02 by creyt            ###   ########.fr       */
+/*   Updated: 2023/01/27 10:03:41 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 Contact::Contact(void)
 {
 	std::cout << "Constructor Contact called" << std::endl;
-	return;
 }
 
 Contact::~Contact(void)
 {
 	std::cout << "Destructor Contact called" << std::endl;
-	return;
 }
 
 std::string	Contact::getFirstName(void) const
