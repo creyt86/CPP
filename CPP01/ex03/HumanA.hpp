@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 15:58:02 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/03 13:17:45 by creyt            ###   ########.fr       */
+/*   Created: 2023/02/03 15:05:03 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/03 15:12:38 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-Zombie::Zombie(void)
+# include <iostream>
+# include <string>
+
+class HumanA
 {
-	std::cout << "Oh God, a new zombie is coming !" << std::endl;
+	public :
+				void	attack();
+	private :
+				std::string	_name;
+				std::string _weapon;
 }
-
-Zombie::~Zombie(void)
-{
-	std::cout << "Zombie " << this->_name << " has fallen" << std::endl;
-}
-
-void	Zombie::setName(std::string name)
-{
-	this->_name = name;
-	return;
-}
-
-void	Zombie::announce(void)
-{
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-

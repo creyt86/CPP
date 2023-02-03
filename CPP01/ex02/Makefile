@@ -1,7 +1,5 @@
-
-SRCS = main.cpp Zombie.cpp zombieHorde.cpp
-NAME = zombieHorde
-HEAD = Zombie.hpp
+NAME = brain
+SRCS = main.cpp
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

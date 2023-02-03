@@ -5,25 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 15:54:39 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/03 13:10:10 by creyt            ###   ########.fr       */
+/*   Created: 2023/02/03 13:40:11 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/03 14:38:08 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include <iostream>
+#include <iomanip>
 
 int	main(void)
 {
-	Zombie*	zombies;
-	int	nZombies;
-	std::string	name;
+	std::string brain = "HI THIS IS BRAIN";
 
-	std::cout << "\n Zombie, what's your name ?";
-	std::cin >> name;
-	std::cout << "How many zombies do you want to create ?";
-	std::cin >> nZombies;
-	zombies = zombieHorde(nZombies, name);
+	std::string* stringPTR = &brain;
+	std::string& stringREF = brain;
 
-	delete [] zombies;
-	return (0);
+	std::cout << "String adress : " << &brain << std::endl;
+	std::cout << "StringPTR adress : " << &(stringPTR) << std::endl;
+	std::cout << "StringREF adress : " << &stringREF << std::endl;
+
+	std::cout << "String value : " << brain << std::endl;
+	std::cout << "StringPTR value : " << *stringPTR << std::endl;
+	std::cout << "StringREF value : " << stringREF << std::endl;
+
+	return(0);
 }
