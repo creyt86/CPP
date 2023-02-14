@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:47:18 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/09 15:00:19 by creyt            ###   ########.fr       */
+/*   Created: 2023/02/09 13:46:51 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/09 15:02:13 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "HumanA.hpp"
 
-# include <iostream>
-# include <string>
-
-class	Weapon
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
-	public :
-				Weapon(std::string type);
-				~Weapon(void);
-				std::string	const &getType() const;
-				void	setType(std::string);
-	private :
-				std::string	_type;
-};
+	std::cout << "Human A 'Bob' is coming" << std::endl;
+}
 
-#endif
+HumanA::~HumanA(void)
+{
+	std::cout << "Oh nooooo ! Bob has been killed ! RIP Bob" << std::endl;
+}
+
+void	HumanA::attack()
+{
+	std::cout << this->_name << " attacks whith the " << this->_weapon.getType() << std::endl;
+}

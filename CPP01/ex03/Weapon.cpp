@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:47:18 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/09 15:00:19 by creyt            ###   ########.fr       */
+/*   Created: 2023/02/09 13:29:14 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/09 15:01:20 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "Weapon.hpp"
 
-# include <iostream>
-# include <string>
-
-class	Weapon
+Weapon::Weapon(std::string type) : _type(type)
 {
-	public :
-				Weapon(std::string type);
-				~Weapon(void);
-				std::string	const &getType() const;
-				void	setType(std::string);
-	private :
-				std::string	_type;
-};
+	std::cout << "The " << this->_type << " is created" << std::endl;
+}
 
-#endif
+Weapon::~Weapon(void)
+{
+	std::cout << "The " << this->_type << " is destroyed" << std::endl;
+}
+
+std::string const	&Weapon::getType() const
+{
+	return this->_type;
+}
+
+void	Weapon::setType(std::string type)
+{
+	this->_type = type;
+}

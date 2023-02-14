@@ -1,6 +1,5 @@
-NAME = Weapon
-HEAD = Weapon.hpp
-SRCS = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
+NAME = sed
+SRCS = main.cpp
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

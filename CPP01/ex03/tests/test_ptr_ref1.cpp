@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   test ptr_ref1.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:47:18 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/09 15:00:19 by creyt            ###   ########.fr       */
+/*   Created: 2023/02/07 13:03:02 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/07 13:08:49 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+// une reference est pointeur qui est constant et toujours deference
 
-# include <iostream>
-# include <string>
+#include <iostream>
 
-class	Weapon
+int	main(void)
 {
-	public :
-				Weapon(std::string type);
-				~Weapon(void);
-				std::string	const &getType() const;
-				void	setType(std::string);
-	private :
-				std::string	_type;
-};
+	int	number = 42;
 
-#endif
+	int* nbPtr = &number;
+	int& nbRef = number;
+
+	std::cout << number << " " << *nbPtr << " " << nbRef << std::endl;
+
+	*nbPtr = 21;
+	std::cout << number << std::endl;
+	nbRef = 84;
+	std::cout << number << std::endl;
+
+	return (0);
+}
