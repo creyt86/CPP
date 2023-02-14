@@ -6,12 +6,12 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:01:25 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/14 10:45:42 by creyt            ###   ########.fr       */
+/*   Updated: 2023/02/14 11:21:29 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <fstream>
-# include <iostream>
+#include <fstream>
+#include <iostream>
 
 std::string		replace(std::string line, std::string s1, std::string s2)
 {
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		std::cout << "Error: Opening file impossible" << std::endl;
 	else
 	{
-		while(getline(file, line))
+		while (getline(file, line))
 		{
 			line = replace(line, argv[2], argv[3]);
 			newFile << line;
