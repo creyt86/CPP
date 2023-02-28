@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 13:50:59 by creyt             #+#    #+#             */
+/*   Updated: 2023/02/28 16:10:09 by creyt            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(std::string theName)
+{
+	this->_name = theName;
+	this->_hitPoints = 10;
+	this->_nrjPoints = 10;
+	this->_attackDamage = 0;
+	std::cout << this->_name << " is alive" << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const& cpy)
+{
+	*this = cpy;
+	std::cout << "Copy constructor called" << std::endl;
+}
+
+ClapTrap & ClapTrap::operator=(ClapTrap const& rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_nrjPoints = rhs._nrjPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	std::cout << "Copy assignement called" << std::endl;
+	return *this;
+}
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << this->_name << " is dead" << std::endl;
+}
+
+void	ClapTrap::attack(const std::string& target)
+{
+	if (this->_hitPoints == 0 || this->_nrjPoints == 0)
+		std::cout << this->_name << " is down, please wait a moment " << std::endl;
+	this->_nrjPoints -= 1;
+	std::cout << this->_name << " attack " << target << " for " << this->_attackDamage << " damage !" << std::endl;
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	std::cout << this->_name << " take " << amount << " damage !" << std::endl;
+	this->_hitPoints -= amount;
+	std::cout << this->_name << " is now at " << this->_hitPoints << " health points !" << std::endl;
+}
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->_nrjPoints <= 0 || this->_hitPoints <= 0 )
+	{
+		std::cout << this->_name << " is down, please wait a moment !" << std::endl;
+		return ;
+	}
+	this->_nrjPoints += 1;
+	std::cout << this->_name << " repairing " << this->_hitPoints << " health points !" << std::endl;
+	this->_nrjPoints += amount;
+	std::cout << this->_name << " is now at " << amount  << " health points !" << std::endl;
+}
