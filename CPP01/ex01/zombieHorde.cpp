@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:02:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/03 13:17:52 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/06 12:53:54 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie*	zombieHorde(int N, std::string name)
 	for(int i = 0; i < N; i++)
 	{
 		zombies[i].setName(name);
-		std::cout << "Zombie number " << i << " is here" << std::endl;
+		std::cout << "Zombie number " << i + 1 << " is here" << std::endl;
 		zombies[i].announce();
 	}
 	return (zombies);

@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:46:19 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/24 09:24:19 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/06 09:31:18 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Fixed::Fixed(float value)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawbits member function called" << std::endl;
+	//std::cout << "getRawbits member function called" << std::endl;
 	return (this->_value);
 }
 

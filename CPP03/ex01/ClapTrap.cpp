@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:50:59 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/06 10:16:35 by creyt            ###   ########.fr       */
+/*   Created: 2023/03/06 11:10:09 by creyt             #+#    #+#             */
+/*   Updated: 2023/03/06 12:59:57 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ ClapTrap::ClapTrap(std::string theName)
 ClapTrap::ClapTrap(ClapTrap const& cpy)
 {
 	*this = cpy;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructeur called" << std::endl;
 }
 
-ClapTrap & ClapTrap::operator=(ClapTrap const& rhs)
+ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -52,7 +52,7 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap : " << this->_name << " is down, cannot attack anymore " << std::endl;
 		return ;
 	}
-	this->_nrjPoints -= 1;
+	_nrjPoints -= 1;
 	std::cout << "ClapTrap : " << this->_name << " attacks " << target << " for " << this->_attackDamage << " damage !" << std::endl;
 }
 

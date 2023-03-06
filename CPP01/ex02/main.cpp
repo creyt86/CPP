@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 13:40:11 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/03 14:38:08 by creyt            ###   ########.fr       */
+/*   Updated: 2023/02/28 15:11:04 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	std::string& stringREF = brain;
 
 	std::cout << "String adress : " << &brain << std::endl;
-	std::cout << "StringPTR adress : " << &(stringPTR) << std::endl;
+	std::cout << "StringPTR adress : " << stringPTR << std::endl;
 	std::cout << "StringREF adress : " << &stringREF << std::endl;
 
 	std::cout << "String value : " << brain << std::endl;

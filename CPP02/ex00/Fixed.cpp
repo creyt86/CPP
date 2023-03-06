@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:46:43 by creyt             #+#    #+#             */
-/*   Updated: 2023/02/24 09:18:45 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/06 09:28:18 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,27 @@ Fixed::Fixed(void)
 {
 	this->_value = 0;
 	std::cout << "Default constructor called" << std::endl;
-	return;
-}
-
-Fixed::~Fixed(void)
-{
-	std::cout << "Destructor called" << std::endl;
-	return;
 }
 
 Fixed::Fixed(Fixed const &cpy)
 {
 	*this = cpy;
 	std::cout << "Copy constructor called" << std::endl;
-	return;
+}
+
+Fixed &	Fixed::operator=(Fixed const &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_value = rhs.getRawBits();
+	}
+	std::cout << "Copy assignment operator called" << std::endl;
+	return (*this);
+}
+
+Fixed::~Fixed(void)
+{
+	std::cout << "Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits(void) const
@@ -41,16 +48,6 @@ int	Fixed::getRawBits(void) const
 void		Fixed::setRawBits(int const raw)
 {
 	this->_value = raw;
-}
-
-Fixed &	Fixed::operator=(Fixed const &rhs)
-{
-	if (this != &rhs)
-	{
-		this->_value = rhs.getRawBits();
-	}
-	std::cout << "Copy assignment operator called" << std::endl;
-	return (*this);
 }
 
 /*

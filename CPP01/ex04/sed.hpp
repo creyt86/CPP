@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 15:14:32 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/06 12:53:03 by creyt            ###   ########.fr       */
+/*   Created: 2023/03/06 09:07:53 by creyt             #+#    #+#             */
+/*   Updated: 2023/03/06 09:09:22 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-Zombie* newZombie(std::string name)
-{
-	Zombie*	newZo = new Zombie();
-	newZo->setName(name);
-	newZo->announce();
-	return (newZo);
-}
+# include <string>
+# include <iostream>
+# include <istream>
+# include <sstream>
+# include <fstream>
+
+# define ARG_ERR "\e[31merror : the compiler must be followed by <filename> <s1> <s2>\e[0m"
+# define OP_ERR "\e[31merror : cannot open file\e[0m"
+# define EM_ERR "\e[31merror : file is empty\e[0m"
+
+#endif
