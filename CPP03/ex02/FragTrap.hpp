@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fragtrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 15:48:16 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/06 15:42:56 by creyt            ###   ########.fr       */
+/*   Created: 2023/03/07 12:49:37 by creyt             #+#    #+#             */
+/*   Updated: 2023/03/07 13:04:02 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+# include <iostream>
+# include <string>
+
+class	FragTrap: public ClapTrap
 {
-	ClapTrap	jane("Jane");
-	ClapTrap	sophie("Sophie");
+	public :
+				FragTrap();
+				FragTrap(std::string theName);
+				FragTrap(FragTrap const& cpy);
+				FragTrap& operator=(FragTrap const &rhs);
+				~FragTrap();
 
-	jane.attack("Sophie");
-	sophie.takeDamage(4);
-	sophie.beRepaired(3);
-	sophie.takeDamage(6);
-	sophie.attack("Jane");
-	return 0;
-}
+				void highFivesGuys(void);
+};
+
+#endif

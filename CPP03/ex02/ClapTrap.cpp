@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:50:59 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/07 12:56:55 by creyt            ###   ########.fr       */
+/*   Created: 2023/03/06 11:10:09 by creyt             #+#    #+#             */
+/*   Updated: 2023/03/07 13:11:27 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ ClapTrap::ClapTrap(std::string theName)
 	this->_hitPoints = 10;
 	this->_nrjPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "ClapTrap" << this->_name << " is alive" << std::endl;
+	std::cout << "ClapTrap : " << this->_name << " is alive" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& cpy)
 {
 	*this = cpy;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructeur called" << std::endl;
 }
 
-ClapTrap & ClapTrap::operator=(ClapTrap const& rhs)
+ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -42,7 +42,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const& rhs)
 		this->_attackDamage = rhs._attackDamage;
 	}
 	std::cout << "Copy assignement called" << std::endl;
-	return *this;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap()
@@ -57,7 +57,7 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap : " << this->_name << " is down, cannot attack anymore " << std::endl;
 		return ;
 	}
-	this->_nrjPoints -= 1;
+	_nrjPoints -= 1;
 	std::cout << "ClapTrap : " << this->_name << " attacks " << target << " for " << this->_attackDamage << " damage !" << std::endl;
 }
 

@@ -1,6 +1,6 @@
-NAME = Fixed
-HEAD = Fixed.hpp
-SRCS = Fixed.cpp main.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+NAME = ScavTrap
+HEAD = ClapTrap.hpp ScavTrap.hpp
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

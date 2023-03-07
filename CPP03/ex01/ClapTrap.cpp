@@ -6,11 +6,16 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:10:09 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/06 12:59:57 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/07 12:57:19 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+{
+	
+}
 
 ClapTrap::ClapTrap(std::string theName)
 {
@@ -18,7 +23,7 @@ ClapTrap::ClapTrap(std::string theName)
 	this->_hitPoints = 10;
 	this->_nrjPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "ClapTrap" << this->_name << " is alive" << std::endl;
+	std::cout << "ClapTrap : " << this->_name << " is alive" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& cpy)

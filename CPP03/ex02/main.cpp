@@ -5,22 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 15:48:16 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/06 15:42:56 by creyt            ###   ########.fr       */
+/*   Created: 2023/03/07 13:18:54 by creyt             #+#    #+#             */
+/*   Updated: 2023/03/07 15:13:09 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
-int	main(void)
+int	main()
 {
-	ClapTrap	jane("Jane");
-	ClapTrap	sophie("Sophie");
+	ClapTrap	ct1("Alberta");
+	FragTrap	ft2("Bouboule");
 
-	jane.attack("Sophie");
-	sophie.takeDamage(4);
-	sophie.beRepaired(3);
-	sophie.takeDamage(6);
-	sophie.attack("Jane");
-	return 0;
+	ct1.attack("Bouboule");
+	ft2.takeDamage(4);
+	ft2.beRepaired(3);
+	ft2.takeDamage(6);
+	ft2.highFivesGuys();
 }
