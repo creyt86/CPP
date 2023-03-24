@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 09:08:55 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/24 10:32:06 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:33:40 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ std::ostream	&operator <<(std::ostream &out, const Bureaucrat &obj)
 	return (out);
 }
 
-void	Bureaucrat::signForm(Form &obj)
+void	Bureaucrat::signForm(AForm &obj)
 {
 	if (_grade <= obj.getGradeSign() && _grade > 0) {
 		obj.beSigned((*this));
@@ -133,5 +133,17 @@ void	Bureaucrat::signForm(Form &obj)
 	}
 	else {
 		std::cout << _name << " couldn't sign " << obj.getName() << " because grade is to low." << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute((*this));
+	}
+	catch (std::exception &e)
+	{
+		std::cout << _name  << " couldn’t execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }

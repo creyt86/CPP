@@ -6,12 +6,12 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:43:39 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/24 11:07:34 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:06:30 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int	main(void) {
 	std::cout << " " << std::endl;
@@ -22,16 +22,16 @@ int	main(void) {
 	try {
 		Bureaucrat Philomena("Philo", 34);
 		//Bureaucrat Paula("Popo", 82);
-		Form okForm("OK", 150, 150);
+		AForm okAForm("OK", 150, 150);
 		std::cout << Philomena;
 		//std::cout << Paula;
-		Philomena.signForm(okForm);
-		std::cout << okForm;
+		Philomena.signForm(okAForm);
+		std::cout << okAForm;
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}
@@ -43,14 +43,14 @@ int	main(void) {
 		//Bureaucrat David("DD", 1);
 		std::cout << Roger;
 		//std::cout << David;
-		Form okForm("OK", 150, 150);
-		Roger.signForm(okForm);
-		std::cout << okForm;
+		AForm okAForm("OK", 150, 150);
+		Roger.signForm(okAForm);
+		std::cout << okAForm;
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}
@@ -60,18 +60,18 @@ int	main(void) {
 	try {
 		Bureaucrat Sunny("Sunny", 0); // too high
 		Bureaucrat Dante("Dante", 151); // to low
-		Form notOkForm("notOK", 150, 150);
+		AForm notOkAForm("notOK", 150, 150);
 		std::cout << Sunny;
 		std::cout << Dante;
 		std::cout << " \n";
-		Sunny.signForm(notOkForm);
-		Dante.signForm(notOkForm);
-		std::cout << notOkForm;
+		Sunny.signForm(notOkAForm);
+		Dante.signForm(notOkAForm);
+		std::cout << notOkAForm;
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}
@@ -91,10 +91,10 @@ int	main(void) {
 		std::cout << David.getName() << " ";
 		David.increaseGrade();
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}
@@ -123,30 +123,30 @@ int	main(void) {
 		std::cout << TooLow;
 		TooLow.decreaseGrade();
 		std::cout << " \n";
-		Form isForm("isForm", 150, 150);
-		TooLow.signForm(isForm);
-		std::cout << isForm;
+		AForm isAForm("isAForm", 150, 150);
+		TooLow.signForm(isAForm);
+		std::cout << isAForm;
 		std::cout << "\n";
-		TooHigh.signForm(isForm);
-		std::cout << isForm;
+		TooHigh.signForm(isAForm);
+		std::cout << isAForm;
 		std::cout << " \n";
-		Philomena.signForm(isForm);
-		std::cout << isForm;
+		Philomena.signForm(isAForm);
+		std::cout << isAForm;
 		std::cout << " \n";
-		David.signForm(isForm);
-		std::cout << isForm;
+		David.signForm(isAForm);
+		std::cout << isAForm;
 		std::cout << "\n" << std::endl;
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}
 	std::cout << "--------------------------------------------" << std::endl;
 
-	std::cout << "Increase or decrease grades of Bureaucrats Wrong FORM: \n" << std::endl;
+	std::cout << "Increase or decrease grades of Bureaucrats Wrong Form: \n" << std::endl;
 	try {
 
 		Bureaucrat Philomena("Philo", 34);
@@ -166,24 +166,24 @@ int	main(void) {
 		std::cout << TooLow;
 		TooLow.decreaseGrade();
 		std::cout << " \n";
-		Form THEForm("THEForm", 152, 1250);
-		TooLow.signForm(THEForm);
-		std::cout << THEForm;
+		AForm THEAForm("THEAForm", 152, 1250);
+		TooLow.signForm(THEAForm);
+		std::cout << THEAForm;
 		std::cout << "\n";
-		TooHigh.signForm(THEForm);
-		std::cout << THEForm;
+		TooHigh.signForm(THEAForm);
+		std::cout << THEAForm;
 		std::cout << " \n";
-		Philomena.signForm(THEForm);
-		std::cout << THEForm;
+		Philomena.signForm(THEAForm);
+		std::cout << THEAForm;
 		std::cout << " \n";
-		David.signForm(THEForm);
-		std::cout << THEForm;
+		David.signForm(THEAForm);
+		std::cout << THEAForm;
 		std::cout << "\n" << std::endl;
 	}
-	catch (Form::GradeTooLowException &tooLow) {
+	catch (AForm::GradeTooLowException &tooLow) {
 		std::cout << tooLow.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &tooHigh)
+	catch (AForm::GradeTooHighException &tooHigh)
 	{
 		std::cout << tooHigh.what() << std::endl;
 	}

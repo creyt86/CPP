@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 08:50:29 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/24 10:26:11 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:28:08 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdexcept>
 
 class Bureaucrat;
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define LOW "\e[31mToo low. Your are vired ! \e[0m"
 # define HIGH "\033[34mYou get too high. Above the sky there is the sun but think about Icare... \e[0m"
@@ -38,7 +38,8 @@ class	Bureaucrat
 
 			void	increaseGrade();
 			void	decreaseGrade();
-			void	signForm(Form &Form);
+			void	signForm(AForm &obj);
+			void	executeForm(AForm const &form);
 
 			class	GradeTooHighException : public std::exception
 			{
