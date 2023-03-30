@@ -6,20 +6,17 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 09:08:55 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/21 11:21:30 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/30 10:05:39 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{
-	std::cout << "Bureaucrat is ready to work" << std::endl;
+Bureaucrat::Bureaucrat() {
+	std::cout << "Bureau is open, bureaucrat takes his coffee" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
-{
-	std::cout << "Bureaucrat is ready to work" << std::endl;
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
 	try
 	{
 		if (getGrade() < 1)
@@ -31,55 +28,46 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &cpy)
-{
-	*this = cpy;
-	std::cout << "Bureaucrat is using the copy's machine" << std::endl;
+Bureaucrat::~Bureaucrat() {
+	std::cout << "Bureau is close, bureaucrat turns back home" << std::endl;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
-{
-	if (this != &rhs)
-	{
-		//this->_name = rhs.getName();
-		this->_grade = rhs._grade;
+Bureaucrat::Bureaucrat(Bureaucrat const &copy) {
+	std::cout << "Bureaucrat makes a copy at the copy machine" << std::endl;
+	*this = copy;
+}
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs) {
+	if (this != &rhs) {
+		//_name = rhs._name;
+		_grade = rhs.getGrade();
 	}
 	std::cout << "Bureaucrat is assign to a task" << std::endl;
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat()
-{
-	std::cout << "Bureaucrat finishes his work's day" << std::endl;
-}
-
-std::string	Bureaucrat::getName() const
-{
+std::string	Bureaucrat::getName() const {
 	return _name;
 }
 
-int	Bureaucrat::getGrade() const
-{
+int	Bureaucrat::getGrade() const {
 	return _grade;
 }
 
-void Bureaucrat::increaseGrade()
-{
+void	Bureaucrat::increaseGrade() {
 	try
 	{
 		if (getGrade() < 1)
 			throw Bureaucrat::GradeTooHighException();
 		else if (getGrade() == 1)
-			std::cout << "Watch out, you cannot go higher" << std::endl;
-		else
-		{
+			std::cout << "\033[33mWatch out, you cannot go higher\e[0m" << std::endl;
+		else {
 			_grade -= 1;
-			std::cout << getName() << " your grade has been increased, your are now at " << getGrade() << " grade" << std::endl;
-		}
+			std::cout << getName() << " your grade has been increased, you are now " << getGrade() << " grade !\n" << std::endl;
 
+		}
 	}
 	catch(const std::exception& e)
 	{
@@ -87,8 +75,7 @@ void Bureaucrat::increaseGrade()
 	}
 }
 
-void	Bureaucrat::decreaseGrade()
-{
+void	Bureaucrat::decreaseGrade() {
 	try
 	{
 		if (getGrade() > 150)

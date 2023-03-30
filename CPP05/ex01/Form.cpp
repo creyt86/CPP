@@ -6,37 +6,29 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:27:27 by creyt             #+#    #+#             */
-/*   Updated: 2023/03/24 10:58:28 by creyt            ###   ########.fr       */
+/*   Updated: 2023/03/30 10:36:05 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : _name("Approved"), _signed(false), _gradeSign(150), _gradeExec(150)
+Form::Form() : _name("Approved"), _signed(false), _signGrade(150), _execGrade(150)
 {
 	std::cout << "The pile of forms to be filled is just here !" << std::endl;
 }
 
-Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
+Form::Form(std::string name, int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	std::cout << "The pile of forms to be filled is just here !" << std::endl;
-	try
-	{
-		if (getGradeSign() < 1 || getGradeExec() < 1)
-			throw Form::GradeTooHighException();
-		else if (getGradeSign() > 150 || getGradeExec() > 150)
-			throw Form::GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (_signGrade < 1 || _execGrade < 1)
+		throw Form::GradeTooHighException();
+	else if (_signGrade > 150 || _execGrade > 150)
+		throw Form::GradeTooLowException();
 }
 
-Form::Form(Form const &cpy) : _name(cpy.getName()), _gradeSign(cpy.getGradeSign()), _gradeExec(cpy.getGradeExec())
+Form::Form(Form const &cpy) : _name(cpy.getName()), _signed(cpy.getSign()), _signGrade(cpy.getSignGrade()), _execGrade(cpy.getExecGrade())
 {
-	*this = cpy;
 	std::cout << "Copy of the forms in progress" << std::endl;
+	*this = cpy;
 }
 
 Form &Form::operator=(Form const &rhs)
@@ -57,19 +49,16 @@ std::string Form::getName() const
 	return _name;
 }
 
-int	Form::getGradeSign() const
-{
-	return _gradeSign;
-}
-
-int	Form::getGradeExec() const
-{
-	return _gradeExec;
-}
-
-bool Form::getSign()const
-{
+bool	Form::getSign() const {
 	return _signed;
+}
+
+int	Form::getSignGrade() const {
+	return _signGrade;
+}
+
+int	Form::getExecGrade() const {
+	return _execGrade;
 }
 
 const char*	   Form::GradeTooHighException::what()  const throw()
@@ -82,10 +71,19 @@ const char*	   Form::GradeTooLowException::what()  const throw()
 	return "Grade too low !";
 }
 
-void	Form::beSigned(Bureaucrat bureaucrat)
+void	Form::beSigned(Bureaucrat &obj)
 {
-	if ( bureaucrat.getGrade() > _gradeSign)
-		throw GradeTooLowException();
+	try
+	{
+		if (obj.getGrade() > this->getSignGrade())
+			throw Form::GradeTooLowException();
+		else
+			this->_signed = true;
+	}
+	catch (std::exception &except)
+	{
+		std::cout << except.what() << std::endl;
+	}
 
 }
 
@@ -97,8 +95,8 @@ std::ostream	&operator<<(std::ostream &out, const Form &obj)
 	else
 		isItSigned = "No";
 	out << "Form " << obj.getName() << std::endl
-		<< "Sign grade " << obj.getGradeSign() << std::endl
-		<< "Exec grade " << obj.getGradeExec() << std::endl
+		<< "Sign grade " << obj.getSignGrade() << std::endl
+		<< "Exec grade " << obj.getExecGrade() << std::endl
 		<< "Is the form signed ? " << isItSigned << std::endl;
 	return out;
 }
