@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serial.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 09:43:48 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 10:49:36 by creyt            ###   ########.fr       */
+/*   Created: 2023/04/03 10:49:54 by creyt             #+#    #+#             */
+/*   Updated: 2023/04/03 11:09:11 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIAL_HPP
-# define SERIAL_HPP
+#include "Serial.hpp"
 
-# include <iomanip>
-# include <iostream>
-
-struct Data
+int	main()
 {
-	char	c;
-	int		i;
-	float	f;
-};
+	Data	d = {'c', 1, 4.2};
 
-uintptr_t	serialize(Data *ptr);
-Data*		deserialize(uintptr_t raw);
+	uintptr_t serial = serialize(&d);
+	Data *deserial = deserialize(serial);
 
+	std::cout << "Data's base : " << " c = " << d.c << " i = " << d.i << " f = " << d.f << std::endl;
 
-#endif
+	std::cout << "Deserialized Data " << " c = " << deserial->c << " i = " << deserial->i << " f = " << deserial->f << std::endl;
+}
