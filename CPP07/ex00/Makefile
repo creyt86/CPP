@@ -1,5 +1,5 @@
-SRCS = Serial.cpp main.cpp
-NAME = Serial
+SRCS = main.cpp
+NAME = whatever
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -22,4 +22,3 @@ cheaks:
 		leaks --atExit --./${NAME}
 
 .PHONY: all clean fclean re cheaks
-

@@ -5,25 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 10:49:54 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/04 08:48:15 by creyt            ###   ########.fr       */
+/*   Created: 2023/04/04 13:10:39 by creyt             #+#    #+#             */
+/*   Updated: 2023/04/04 14:29:29 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serial.hpp"
+#include "iter.hpp"
+
+template<typename T>
+void	*ft_print(T const &array)
+{
+	std::cout << array << std::endl;
+}
 
 int	main()
 {
-	Data	d = {'c', 1, 4.2};
+	std::cout << "INT TEST" << std::endl;
+	int	intArray[5] = {1, 4, 8, 10, 15};
+	iter(intArray, 5, ft_print);
 
-	uintptr_t serial = serialize(&d);
-	Data *deserial = deserialize(serial);
+	std::cout << "FLOAT TEST" << std::endl;
+	float	floatArray[2] = {4.2, 3.0};
+	iter(floatArray, 2, ft_print);
 
-	std::cout << "Data's base : " << " c = " << d.c << " i = " << d.i << " f = " << d.f << std::endl;
+	std::cout << "CHAR TEST" << std::endl;
+	char	charArray[4] = {'c', 'o', 'o', 'l'};
+	iter(charArray, 4, ft_print);
 
-	std::cout << "Deserialized Data " << " c = " << deserial->c << " i = " << deserial->i << " f = " << deserial->f << std::endl;
+	std::cout << "STRING TEST" << std::endl;
+	std::string	stringArray[3] = {"Hello", "my", "friends"};
+	iter(stringArray, 3, ft_print);
 
-	std::cout << "Original address i\t: " << &d.i << std::endl;
-    std::cout << "Deserialized address i\t: " << &deserial->i << std::endl;
-	return 0;
+	return (0);
 }

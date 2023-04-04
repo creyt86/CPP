@@ -5,25 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 10:49:54 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/04 08:48:15 by creyt            ###   ########.fr       */
+/*   Created: 2023/04/04 11:37:14 by creyt             #+#    #+#             */
+/*   Updated: 2023/04/04 12:46:38 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serial.hpp"
+#include "whatever.hpp"
 
-int	main()
+int main( void )
 {
-	Data	d = {'c', 1, 4.2};
-
-	uintptr_t serial = serialize(&d);
-	Data *deserial = deserialize(serial);
-
-	std::cout << "Data's base : " << " c = " << d.c << " i = " << d.i << " f = " << d.f << std::endl;
-
-	std::cout << "Deserialized Data " << " c = " << deserial->c << " i = " << deserial->i << " f = " << deserial->f << std::endl;
-
-	std::cout << "Original address i\t: " << &d.i << std::endl;
-    std::cout << "Deserialized address i\t: " << &deserial->i << std::endl;
+	int a = 2;
+	int b = 3;
+	::swap( a, b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 	return 0;
 }
