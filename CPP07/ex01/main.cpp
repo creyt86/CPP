@@ -6,14 +6,14 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:10:39 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/04 14:29:29 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/11 08:42:02 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-template<typename T>
-void	*ft_print(T const &array)
+template< typename T >
+void	ft_print(T const &array)
 {
 	std::cout << array << std::endl;
 }
