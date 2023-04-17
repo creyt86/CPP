@@ -6,20 +6,20 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:58:18 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 09:14:21 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/17 16:01:46 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
-bool	isPrintable(char c)
+bool	Convert::isPrintable(char c)
 {
 	if (126 >= c && c >= 32)
 		return (true);
 	return (false);
 }
 
-void	printInChar(char c)
+void	Convert::printInChar(char c)
 {
 	std::cout << "char: ";
 	if (!isPrintable(c))
@@ -29,14 +29,14 @@ void	printInChar(char c)
 	std::cout << std::endl;
 }
 
-void	printInInt(int i)
+void	Convert::printInInt(int i)
 {
 	std::cout << "int: ";
 	std::cout << i;
 	std::cout << std::endl;
 }
 
-void	printInFloat(float f, int i)
+void	Convert::printInFloat(float f, int i)
 {
 	if (i == 0)
 		i = 1;
@@ -45,7 +45,7 @@ void	printInFloat(float f, int i)
 	std::cout << "f" << std::endl;
 }
 
-void printInDouble(double d, int i)
+void Convert::printInDouble(double d, int i)
 {
 	if (i == 0)
 		i = 1;
@@ -53,3 +53,8 @@ void printInDouble(double d, int i)
 	std::cout << std::fixed << std::setprecision(i) << d;
 	std::cout << std::endl;
 }
+
+
+// Ce que je dois regler : controler que j'aie bien mes classes dans tous mes exo
+// Gerer les +inf/+inff et les -, sur les chiffres en neg aussi
+

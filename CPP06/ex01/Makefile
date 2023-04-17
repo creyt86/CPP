@@ -18,8 +18,8 @@ fclean: clean
 
 re:		fclean all
 
-cheaks:
-		leaks --atExit --./${NAME}
+leaks:
+		leaks --atExit -- ./${NAME}
 
 .PHONY: all clean fclean re cheaks
 

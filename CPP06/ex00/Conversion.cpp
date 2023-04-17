@@ -6,14 +6,36 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:18:23 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 09:38:54 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/17 15:52:45 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
+Convert::Convert()
+{
+	std::cout << "Convert constructor called" << std::endl;
+}
 
-void	printConversion(std::string arg, std::string type)
+Convert::Convert(Convert const &cpy)
+{
+	*this = cpy;
+	std::cout << "Convert Copy constructor called" << std::endl;
+}
+
+Convert &Convert::operator=(Convert const &rhs)
+{
+	if (this != &rhs)
+	{
+		_int = rhs._int;
+		_char = rhs._char;
+		_float = rhs._float;
+		_double = rhs._double;
+	}
+	std::cout << "Convert assignment called" << std::endl;
+}
+
+void	Convert::printConversion(std::string arg, std::string type)
 {
 	if (type == "char")
 	{
@@ -70,9 +92,16 @@ void	printConversion(std::string arg, std::string type)
 	}
 }
 
-void	convert(std::string arg)
+void	Convert::convert(std::string arg)
 {
 	std::string type;
 	type = findType(arg);
 	printConversion(arg, type);
 }
+
+
+/* La principale différence entre float et double est leur précision et leur taille de stockage.
+Le type float : est stocké sur 4 octets (32 bits) et peut représenter des nombres avec une précision d'environ 6 à 7 chiffres significatifs,
+Le type double : est stocké sur 8 octets (64 bits) et peut représenter des nombres avec une précision d'environ 15 à 16 chiffres significatifs.
+inff, +inff et nanf sont des constantes littérales en C++ qui représentent respectivement l'infini négatif, l'infini positif et la valeur NaN (Not a Number) pour les nombres à virgule flottante de type float.
+*/

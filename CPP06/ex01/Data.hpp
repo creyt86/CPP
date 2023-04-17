@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serial.hpp                                         :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:43:48 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 10:49:36 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/17 16:12:14 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIAL_HPP
-# define SERIAL_HPP
+#ifndef DATA_HPP
+# define DATA_HPP
 
 # include <iomanip>
 # include <iostream>
 
-struct Data
+class Data
 {
-	char	c;
-	int		i;
-	float	f;
+	public:
+			Data();
+			Data(const Data &src);
+			Data &operator=(const Data &rhs);
+			~Data();
+
+			char	c;
+			int		i;
+			float	f;
 };
 
 uintptr_t	serialize(Data *ptr);

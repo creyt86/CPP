@@ -1,5 +1,5 @@
 SRCS = Conversion.cpp main.cpp PrintType.cpp Type.cpp
-NAME = Convert
+NAME = convert
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -18,8 +18,8 @@ fclean: clean
 
 re:		fclean all
 
-cheaks:
-		leaks --atExit --./${NAME}
+leaks:
+		leaks --atExit -- ./${NAME}
 
 .PHONY: all clean fclean re cheaks
 

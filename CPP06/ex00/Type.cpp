@@ -6,13 +6,13 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:48:52 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 09:17:53 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/17 15:56:12 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
-bool	isChar(std::string arg)
+bool	Convert::isChar(std::string arg)
 {
 	if (arg.length() == 1)
 	{
@@ -22,7 +22,7 @@ bool	isChar(std::string arg)
 	return (false);
 }
 
-bool isInt(std::string arg)
+bool Convert::isInt(std::string arg)
 {
 	for (size_t i = 0; i < arg.length(); ++i)
 	{
@@ -35,7 +35,7 @@ bool isInt(std::string arg)
 	return (true);
 }
 
-int	isFloat(std::string arg)
+int	Convert::isFloat(std::string arg)
 {
 	int dot = 0;
 	int sign = 0;
@@ -72,7 +72,7 @@ int	isFloat(std::string arg)
 	return (-1);
 }
 
-int	isDouble(std::string arg)
+int	Convert::isDouble(std::string arg)
 {
 	int dot = 0;
 	int sign = 0;
@@ -103,7 +103,7 @@ int	isDouble(std::string arg)
 	return (-1);
 }
 
-std::string findType(std::string arg)
+std::string Convert::findType(std::string arg)
 {
 	std::string ret = "(NULL)";
 	if (isChar(arg))
