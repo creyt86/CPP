@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:18:23 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/20 10:39:21 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 11:39:06 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 Convert::Convert()
 {
-	std::cout << "Convert constructor called" << std::endl;
+	// std::cout << "Convert constructor called" << std::endl;
 }
 
 Convert::Convert(Convert const &cpy)
 {
 	*this = cpy;
-	std::cout << "Convert Copy constructor called" << std::endl;
+	// std::cout << "Convert Copy constructor called" << std::endl;
+}
+
+Convert::~Convert()
+{
+	// std::cout << "Convert destructor called" << std::endl;
 }
 
 Convert &Convert::operator=(Convert const &rhs)
