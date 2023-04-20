@@ -1,5 +1,5 @@
-SRCS = main2.cpp
-NAME = easyfind
+SRCS = main.cpp Span.cpp
+NAME = Span
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

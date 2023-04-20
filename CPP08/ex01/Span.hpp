@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 08:31:57 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/17 11:04:15 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 13:08:16 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@
 
 class	Span
 {
-	Span();
-	Span(Span const &cpy);
-	Span &operator=(Span const &rhs);
-	~Span();
+	public :
+			Span();
+			Span(unsigned int N);
+			Span(Span const &cpy);
+			Span &operator=(Span const &rhs);
+			~Span();
 
-	void	addNumber(int nb);
-	void	shortestSpan();
-	void	longestSpan();
+			void	addNumber(int value);
+			void	shortestSpan();
+			void	longestSpan();
+	private :
+			unsigned int	_n;
 };
 
 
