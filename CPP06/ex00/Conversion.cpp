@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:18:23 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/17 15:52:45 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:39:21 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ Convert &Convert::operator=(Convert const &rhs)
 		_double = rhs._double;
 	}
 	std::cout << "Convert assignment called" << std::endl;
+	return (*this);
 }
 
 void	Convert::printConversion(std::string arg, std::string type)
@@ -71,13 +72,13 @@ void	Convert::printConversion(std::string arg, std::string type)
 		printInFloat(static_cast<float>(ld), p);
 		printInDouble(static_cast<double>(ld), p);
 	}
-	else if (type == "nan" || type == "-inf" || type == "inf" ||
-			 type == "nanf" || type == "-inff" || type == "inff")
+	else if (type == "nan" || type == "-inf" || type == "inf" || type == "+inf" ||
+			 type == "nanf" || type == "-inff" || type == "inff" || type == "+inff")
 	{
 		float f;
 		if (type == "nan" || type == "nanf")
 			f = NAN;
-		if (type == "inf" || type == "inff")
+		if (type == "inf" || type == "+inf" || type == "inff" || type == "+inff")
 			f = INFINITY;
 		if (type == "-inf" || type == "-inff")
 			f = -INFINITY;
@@ -92,7 +93,8 @@ void	Convert::printConversion(std::string arg, std::string type)
 	}
 }
 
-void	Convert::convert(std::string arg)
+
+void	Convert::conv(std::string arg)
 {
 	std::string type;
 	type = findType(arg);

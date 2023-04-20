@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:46:54 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/03 09:39:29 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:35:35 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
+	{
 		std::cout << "ERROR, just two arguments please" << std::endl;
+		return (1);
+	}
 	else
-		convert(argv[1]);
+		conv(argv[1]);
 }

@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:48:52 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/17 15:56:12 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:38:19 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ bool Convert::isInt(std::string arg)
 {
 	for (size_t i = 0; i < arg.length(); ++i)
 	{
+		if (arg[i] == '+' || arg[i] == '-')
+		{
+			i++;
+			continue;
+		}
 		if (std::isdigit(arg[i]))
 		{
 			continue;
@@ -114,8 +119,8 @@ std::string Convert::findType(std::string arg)
 		ret = "float";
 	if (isDouble(arg) > 0)
 		ret = "double";
-	if (arg == "nan" || arg == "-inf" || arg == "inf" ||
-		arg == "nanf" || arg == "-inff" || arg == "inff")
+	if (arg == "nan" || arg == "-inf" || arg == "inf" || arg == "+inf" ||
+		arg == "nanf" || arg == "-inff" || arg == "inff" || arg == "+inff")
 		ret = arg;
 	return (ret);
 }

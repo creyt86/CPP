@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Classes.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 08:49:43 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/04 09:51:17 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:44:24 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASSES_HPP
-# define CLASSES_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
 # include <iostream>
 # include <cstdlib>

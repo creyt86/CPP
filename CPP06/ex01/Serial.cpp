@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:57:26 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/17 16:15:53 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/20 09:58:00 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ Data::Data(const Data &cpy)
 
 Data &Data::operator=(const Data &rhs)
 {
+	if (this != &rhs)
+	{
+		i = rhs.i;
+		c = rhs.c;
+	}
 	return *this;
 }
 
