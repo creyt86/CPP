@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 08:31:57 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/20 13:08:16 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/25 10:03:24 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <string>
 # include <vector>
 # include <list>
 
@@ -27,10 +28,26 @@ class	Span
 			~Span();
 
 			void	addNumber(int value);
-			void	shortestSpan();
-			void	longestSpan();
+			template <typename InputIterator>
+			void addNumber(InputIterator begin, InputIterator end);
+			int		shortestSpan();
+			int		longestSpan();
+			class SpanException : public std::exception
+			{
+				public:
+					SpanException(const char* msg) : _msg(msg) {}
+					const char* what() const throw()
+					{
+						return _msg;
+					}
+
+				private:
+					const char* _msg; // sert a renvoyer un msg d'erreur si l'exception de passe pas
+			};
 	private :
 			unsigned int	_n;
+			std::vector<int> _nums; // container de vector
+
 };
 
 

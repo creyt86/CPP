@@ -1,5 +1,5 @@
 SRCS = main.cpp
-NAME = whatever
+NAME = Mutant
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:34:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/11 10:03:14 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/25 14:10:42 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ public:
 		_tab = new T[_nbr];
 	}
 
-	Array( const Array &src) : _nbr(src._nbr)
+	Array( const Array &cpy) : _nbr(cpy._nbr)
 	{
 		_tab = NULL;
-		*this = src;
+		*this = cpy;
 	}
 
 	~Array() {
@@ -46,11 +46,13 @@ public:
 	}
 
 	Array &operator=( const Array &rhs ) {
-		if (this != &rhs) {
+		if (this != &rhs)
+		{
 			delete [] _tab;
 			_nbr = rhs.size();
 			_tab = new T[_nbr];
-			for (unsigned int i = 0; i < rhs.size(); i++) {
+			for (unsigned int i = 0; i < rhs.size(); i++)
+			{
 				_tab[i] = rhs._tab[i];
 			}
 		}
@@ -59,7 +61,8 @@ public:
 
 	T &operator[]( unsigned int i )
 	{
-		if ( i >= _nbr ) {
+		if ( i >= _nbr )
+		{
 			throw std::out_of_range("Index out of range");
 		}
 		return ( _tab[i] );
@@ -69,8 +72,6 @@ public:
 	{
 		return ( _nbr );
 	}
-
-
 };
 
 #endif

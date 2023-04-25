@@ -33,7 +33,7 @@ int main(int, char**)
     std::cout << numbers[5] << std::endl;
     try
     {
-        numbers[-2] = 0; // on teste avec un index négatif. Ca ne va pas marcger car le tableau va de 0 a 749.
+        numbers[-2] = 0; // on teste avec un index négatif. Ca ne va pas marcher car le tableau va de 0 a 749.
     }
     catch(const std::exception& e)
     {
@@ -41,7 +41,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[MAX_VAL] = 0; //on teste avec un index de 750. Ca ne va pas marcger car le tableau va de 0 a 749.
+        numbers[MAX_VAL] = 0; //on teste avec un index de 750. Ca ne va pas marcher car le tableau va de 0 a 749.
     }
     catch(const std::exception& e)
     {
@@ -52,6 +52,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }
