@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:58:18 by creyt             #+#    #+#             */
-/*   Updated: 2023/04/17 16:01:46 by creyt            ###   ########.fr       */
+/*   Updated: 2023/04/25 08:40:36 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,3 @@ void Convert::printInDouble(double d, int i)
 	std::cout << std::fixed << std::setprecision(i) << d;
 	std::cout << std::endl;
 }
-
-
-// Ce que je dois regler : controler que j'aie bien mes classes dans tous mes exo
-// Gerer les +inf/+inff et les -, sur les chiffres en neg aussi
-
