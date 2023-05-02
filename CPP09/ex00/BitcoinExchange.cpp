@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:44:58 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/02 13:00:35 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/02 14:33:40 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,14 @@ bool	BitcoinExchange::getDataBaseValue(std::string DBFile)
 			}
 			else
 				dateOK = checkDBValue(line);
-			if (dateOK && checkTitle)
+			if (dateOK && titleOK)
 			{
 				dateDB = line.substr(0, 10);
 				_exchangeRates[dateDB] = _value;
 			}
 		}
 	}
+	return (false);
 }
 
 bool	BitcoinExchange::getInputValue(std::string inputFile)
@@ -137,7 +138,7 @@ bool	BitcoinExchange::getInputValue(std::string inputFile)
 						std::cout << "Error : date too early" << std::endl;
 				}
 				else
-					std::cout	<< dateInput << "==>"
+					std::cout	<< dateInput << " ==> "
 								<< std::setw(10) << std::left << _value << " = "
 								<< std::setw(15) << std::right << ((*it).second * _value)
 								<< std::endl;
