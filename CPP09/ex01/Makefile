@@ -1,7 +1,7 @@
 SRCS = main.cpp
 NAME = RPN
 CC = c++
-CXXFLAGS = -Wall -Wextra - Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJS = ${SRCS:.cpp=.o}
 
