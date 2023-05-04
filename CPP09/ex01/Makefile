@@ -1,4 +1,4 @@
-SRCS = main.cpp
+SRCS = main.cpp RPN.cpp
 NAME = RPN
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
