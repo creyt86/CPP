@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:10:40 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/09 11:52:58 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/09 13:43:05 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,31 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
 	if (this != &rhs)
 	{
 		_list = rhs._list;
+		_sortedList = rhs._sortedList;
 		_vector = rhs._vector;
+		_sortedVector = rhs._sortedVector;
 	}
 	return (*this);
 }
 
 PmergeMe::~PmergeMe(){}
 
-
-void	PmergeMe::push_in_vector()
+int	PmergeMe::getNumberArgc(int _numberArgc)
 {
-	
+	return (_numberArgc);
 }
+
+int	PmergeMe::setNumberArgc(int nbArgc)
+{
+	nbArgc = _numberArgc;
+}
+
+void	PmergeMe::pushAndPairInVector(int num, char **argv)
+{
+	for (int i = 1; i < num + 1; i++)
+	{
+		std::make_pair(atoi(argv[i]), atoi(argv[i + 1]));
+	}
+}
+
+
