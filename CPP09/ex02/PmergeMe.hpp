@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:50:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/09 13:33:39 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:40:22 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 # define PMERGEME_HPP
 
 # include <iostream>
-# include <string>
+# include <iomanip>
 # include <algorithm>
-# include <vector>
+# include <stdexcept>
+# include <utility>
+# include <ctime>
+# include <limits>
+
 # include <list>
+# include <vector>
+# include <set>
 
 class PmergeMe
 {
 	private:
-			std::vector<int>	_vector;
+			std::vector< std::pair<int, int> > _vector;
 			std::vector<int>	_sortedVector;
 			std::list<int>	_list;
 			std::list<int>	_sortedList;
@@ -36,7 +42,7 @@ class PmergeMe
 
 			int		safeAtoi(const char* str);
 			int		getNumberArgc(int _numberArgc);
-			int		setNumberArgc(int nbArgc);
+			void	setNumberArgc(int nbArgc);
 			void	pushAndPairInVector(int num, char **argv);
 			void	swap_in_vector();
 

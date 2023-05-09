@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 09:17:54 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/09 13:16:31 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:50:20 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int	main(int argc, char **argv)
 
 		for (int i = 1; i < argc; i++)
 		{
-			num = pme.safeAtoi(argv[i]);
-			victor.push_back(num);
+		//	num = pme.safeAtoi(argv[i]);
 		}
 		if (num != 0)
 		{
@@ -65,6 +64,8 @@ int	main(int argc, char **argv)
 			for (int i = 1; i < argc; i++)
 				std::cout << argv[i] << " ";
 		}
+            pme.pushAndPairInVector(argc, argv);
+
 	}
 	catch(const std::exception& e)
 	{
