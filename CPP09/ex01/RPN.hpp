@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:40:23 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/04 11:10:04 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/04 12:48:18 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class RPN
 	private:
 				std::stack<int> _stack;
 				int	_number;
-//				int	_operator;
 				int	_countNumber;
 				int	_countOperator;
 
