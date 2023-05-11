@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:50:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/11 13:56:00 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/11 15:21:18 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@ class PmergeMe {
 	private:
 		unsigned long int	_countArgNumber;
 		std::vector<int> _vect;
-		std::vector<std::pair<int, int> > _pairs;
+		std::vector<std::pair<int, int> >	_pairs;
 		std::vector<int> _sortVect;
-		std::list<int> _list;
-		std::list<int> _sortList;
+		std::list<int>	_list;
+		std::list<int>	_sortList;
+		std::clock_t	_vStart;
+        double	_vTime;
+
 
 	public:
 		PmergeMe();
@@ -47,10 +50,12 @@ class PmergeMe {
 		void	upFirstOfPairsVector();
 		void	evenOddNumArgVect(int argc, char **argv); //impaires
 		void	sortNumberAlgo();
-		int		timeToProcessRange();
 		void	printResultVector();
-
+		void	insertionSortVect(std::vector<std::pair<int, int> >& pairs, std::vector<int>& sortVect);
 		void	evenOddNumArgList(int argc, char **argv);
+
+		clock_t	getTimeVector();
+		clock_t getTimeList();
 
 		/* UTILS */
 		int safeAtoi(const char* str);
