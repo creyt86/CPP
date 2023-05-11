@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:50:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/11 15:21:18 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/11 15:38:22 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PmergeMe {
 		std::list<int>	_list;
 		std::list<int>	_sortList;
 		std::clock_t	_vStart;
-        double	_vTime;
+        clock_t	_vTime;
 
 
 	public:

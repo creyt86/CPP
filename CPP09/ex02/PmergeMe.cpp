@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:04:54 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/11 15:36:12 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/11 15:41:47 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	PmergeMe::upFirstOfPairsVector() {
 			continue;
 		_sortVect.push_back((*it).first);
 	}
-} 
+}
 
 void	PmergeMe::printResultVector() {
 	for (std::vector<int>::iterator it=_sortVect.begin(); it != _sortVect.end(); it++)
@@ -157,7 +157,7 @@ void	PmergeMe::printResultVector() {
 	std::cout << std::endl;
 }
 
-clock_t	getTimeVector()
+clock_t	PmergeMe::getTimeVector()
 {
 	clock_t	ms =  1000000/CLOCKS_PER_SEC;
 	return (_vTime * ms);
