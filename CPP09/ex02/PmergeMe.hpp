@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:50:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/09 15:40:22 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/11 13:56:00 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,58 @@
 # define PMERGEME_HPP
 
 # include <iostream>
-# include <iomanip>
-# include <algorithm>
-# include <stdexcept>
-# include <utility>
-# include <ctime>
-# include <limits>
-
-# include <list>
+# include <string>
 # include <vector>
-# include <set>
+# include <list>
+# include <ctime>
+# include <stdlib.h>
 
-class PmergeMe
-{
+#define ERR "\e[31mError : \e[0m"
+#define RES "\033[32mRESULT : \e[0m"
+#define JOKER -1
+
+class PmergeMe {
 	private:
-			std::vector< std::pair<int, int> > _vector;
-			std::vector<int>	_sortedVector;
-			std::list<int>	_list;
-			std::list<int>	_sortedList;
-			int	_numberArgc;
+		unsigned long int	_countArgNumber;
+		std::vector<int> _vect;
+		std::vector<std::pair<int, int> > _pairs;
+		std::vector<int> _sortVect;
+		std::list<int> _list;
+		std::list<int> _sortList;
 
 	public:
-			PmergeMe();
-			PmergeMe(PmergeMe const &cpy);
-			PmergeMe &operator=(PmergeMe const &rhs);
-			~PmergeMe();
+		PmergeMe();
+		~PmergeMe();
+		PmergeMe(const PmergeMe& cpy);
+		PmergeMe& operator=(const PmergeMe& rhs);
 
-			int		safeAtoi(const char* str);
-			int		getNumberArgc(int _numberArgc);
-			void	setNumberArgc(int nbArgc);
-			void	pushAndPairInVector(int num, char **argv);
-			void	swap_in_vector();
+		int		getArgNumber();
+		void	setArgNumber(int argNum);
+		//int		getArgNumber(const std::string& number) const;
+		void	swapPairsVector();
+		// void	jokerProcess();
+		void	upFirstOfPairsVector();
+		void	evenOddNumArgVect(int argc, char **argv); //impaires
+		void	sortNumberAlgo();
+		int		timeToProcessRange();
+		void	printResultVector();
 
-			class	PmException : public std::exception
-			{
-				public:
-						PmException(const char* msg) : _msg(msg) {}
-						const char* what() const throw()
-						{
-							return _msg;
-						}
+		void	evenOddNumArgList(int argc, char **argv);
 
-				private:
-						const char* _msg;
-			};
+		/* UTILS */
+		int safeAtoi(const char* str);
+
+		class PMException : public std::exception {
+			public:
+				PMException(const char* msg) : _msg(msg) {}
+				const char* what() const throw() {
+					return _msg;
+				}
+
+			private:
+				const char* _msg;
+		};
 };
-
 
 
 #endif

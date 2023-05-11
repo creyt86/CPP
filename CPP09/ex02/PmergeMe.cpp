@@ -5,53 +5,165 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 13:10:40 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/09 15:48:33 by creyt            ###   ########.fr       */
+/*   Created: 2023/05/11 13:04:54 by creyt             #+#    #+#             */
+/*   Updated: 2023/05/11 13:55:12 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() : _countArgNumber(0) {}
 
-PmergeMe::PmergeMe(PmergeMe const &cpy)
+PmergeMe::~PmergeMe() {}
+
+PmergeMe::PmergeMe(const PmergeMe& cpy)
 {
 	*this = cpy;
 }
 
-PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
+PmergeMe& PmergeMe::operator=(const PmergeMe& rhs)
 {
-	if (this != &rhs)
+	_countArgNumber = rhs._countArgNumber;
+	_vect = rhs._vect;
+	_pairs = rhs._pairs;
+	_sortVect = rhs._sortVect;
+	_list = rhs._list;
+	return *this;
+}
+
+int	PmergeMe::getArgNumber()
+{
+	return _countArgNumber;
+}
+
+void	PmergeMe::setArgNumber(int argNum)
+{
+	_countArgNumber = argNum;
+}
+
+void	PmergeMe::evenOddNumArgVect(int argc, char **argv)
+{
+	int argNbr = argc - 1;
+	for(int i = 1; i < argNbr; i++)
 	{
-		_list = rhs._list;
-		_sortedList = rhs._sortedList;
-		_vector = rhs._vector;
-		_sortedVector = rhs._sortedVector;
+		if (argNbr % 2 == 0)
+		{
+			if (i % 2)
+			{
+				_pairs.push_back(std::make_pair(PmergeMe::safeAtoi(argv[i]), PmergeMe::safeAtoi(argv[i+1])));//_pairs.push_back(std::make_pair(atoi(argv[i]),atoi(argv[i + 2])));
+			}
+		}
+		else
+		{
+			if (i % 2)
+				_pairs.push_back(std::make_pair(PmergeMe::safeAtoi(argv[i]), PmergeMe::safeAtoi(argv[i+1])));
+			if (i == argNbr - 1)
+				_pairs.push_back(std::make_pair(JOKER, PmergeMe::safeAtoi(argv[i + 1])));
+		}
 	}
-	return (*this);
+	for(std::vector<std::pair<int, int> >::iterator it = _pairs.begin(); it != _pairs.end(); it++)
+		std::cout << (*it).first << " " << (*it).second << std::endl;
+	// PmergeMe::swapPairsVector();
+	// PmergeMe::upFirstOfPairsVector();
 }
 
-PmergeMe::~PmergeMe(){}
-
-int	PmergeMe::getNumberArgc(int _numberArgc)
+void	PmergeMe::sortNumberAlgo()
 {
-	return (_numberArgc);
+	PmergeMe::swapPairsVector();
+	PmergeMe::upFirstOfPairsVector();
+		// Affichage du résultat
+//   Parcourir le vecteur et imprimer chaque paire
+	for (std::vector<std::pair<int, int> >::iterator it = _pairs.begin(); it != _pairs.end(); ++it)
+		std::cout << "Vecteur _paires trier : " << it->first << it->second << std::endl;
+	for (size_t i = 0; i < _sortVect.size(); i++)
+		std::cout << _sortVect[i] << " ";
+
+	// 	// Tri du vecteur _sortVect
+	// std::sort(_sortVect.begin(), _sortVect.end());
+
+	// // Insérer chaque élément de _sortVect dans vec1
+	// for (size_t i = 0; i < _sortVect.size(); i++) {
+	// 	std::vector<int>::iterator it = std::lower_bound(_pairs.begin(), _pairs.end(), _sortVect[i]);
+	// 	_pairs.insert(it, _sortVect[i]);
+	// }
+
+	// // Affichage du résultat
+	// for (size_t i = 0; i < _pairs.size(); i++) {
+	// 	std::cout << _pairs[i] << " ";
+	// }
+	// std::cout << std::endl;
 }
 
-void	PmergeMe::setNumberArgc(int nbArgc)
+int		PmergeMe::timeToProcessRange()
 {
-	nbArgc = _numberArgc;
+   // Prendre le temps de début
+	clock_t start = clock();
+
+	// Exécuter l'algorithme de tri
+	// ...
+
+	// Prendre le temps de fin
+	clock_t end = clock();
+
+	// Calculer le temps écoulé en secondes
+	double elapsed_time = double(end - start) / CLOCKS_PER_SEC;
+
+	std::cout << "Temps écoulé: " << elapsed_time << " secondes" << std::endl;
+
+	return elapsed_time;
 }
 
-void	PmergeMe::pushAndPairInVector(int num, char **argv)
-{
-	for (int i = 1; i < num + 1; i++)
 
+void	PmergeMe::swapPairsVector()
+{
+	int	tmp;
+
+	for (std::vector< std::pair<int, int> >::iterator it=_pairs.begin(); it != _pairs.end(); it++)
 	{
-		_vector.push_back(std::make_pair(atoi(argv[i]), atoi(argv[i + 1])));
+		if ((*it).first > (*it).second) //(*it).first it's the 1st number of the pair
+		{
+			tmp = (*it).first;
+			(*it).first = (*it).second; //(*it).second it's the 2nd number of the pair
+			(*it).second = tmp;
+		}
 	}
-	for (std::vector< std::pair<int, int> >::iterator it = _vector.begin(); it != _vector.end(); it++)
-		std::cout << (*it).first << " " << (*it).second << std::endl; // sert a imprimer les iterateurs de mon conteneur vector
+	std::sort(_pairs.begin(), _pairs.end());
+	std::vector< std::pair<int, int> >::iterator it=_pairs.begin();// a enlever ?
+	if ((*it).first == JOKER)
+	{
+		_pairs.insert(_pairs.end(), _pairs.front());
+		_pairs.erase(_pairs.begin());
+	}
 }
 
+// void	jokerProcess() {
+// 	std::sort(_pairs.begin(), _pairs.end());
+// 	std::vector< std::pair<int, int> >::iterator it=_pairs.begin();
+// 	if ((*it).first == -1)
+// 	{
+// 		_pairs.insert(_pairs.end(), _pairs.front());
+// 		_pairs.erase(_pairs.begin());
+// 	}
+// }
 
+void	PmergeMe::upFirstOfPairsVector() {
+	for (std::vector< std::pair<int, int> >::iterator it=_pairs.begin(); it != _pairs.end(); it++)
+	{
+		if ((*it).first == JOKER)
+			continue;
+		_sortVect.push_back((*it).first);
+	}
+}
+
+void	PmergeMe::printResultVector() {
+	for (std::vector<int>::iterator it=_sortVect.begin(); it != _sortVect.end(); it++)
+	{
+		std::cout << (*it) << " ";
+	}
+	std::cout << std::endl;
+}
+
+void	PmergeMe::evenOddNumArgList(int argc, char **argv)
+{
+	int argc = 
+}
