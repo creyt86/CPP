@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:50:15 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/11 15:38:22 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/16 08:19:26 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 # include <vector>
 # include <list>
 # include <ctime>
+# include <climits> //UNSIGNED_INT_MAX
 # include <stdlib.h>
+# include <algorithm>
+# include <iterator>
 
+#define START "\033[32m"
+#define END "\e[0m"
 #define ERR "\e[31mError : \e[0m"
 #define RES "\033[32mRESULT : \e[0m"
 #define JOKER -1
@@ -27,14 +32,13 @@
 class PmergeMe {
 	private:
 		unsigned long int	_countArgNumber;
+		clock_t	_vTime;
+		clock_t	_lTime;
 		std::vector<int> _vect;
-		std::vector<std::pair<int, int> >	_pairs;
+		std::vector<std::pair<int, int> > _pairs;
 		std::vector<int> _sortVect;
-		std::list<int>	_list;
-		std::list<int>	_sortList;
-		std::clock_t	_vStart;
-        clock_t	_vTime;
-
+		std::list<std::pair<int, int> > _pairList;
+		std::list<int> _sortList;
 
 	public:
 		PmergeMe();
@@ -42,27 +46,32 @@ class PmergeMe {
 		PmergeMe(const PmergeMe& cpy);
 		PmergeMe& operator=(const PmergeMe& rhs);
 
-		int		getArgNumber();
-		void	setArgNumber(int argNum);
-		//int		getArgNumber(const std::string& number) const;
+		/* VECTOR */
 		void	swapPairsVector();
-		// void	jokerProcess();
 		void	upFirstOfPairsVector();
 		void	evenOddNumArgVect(int argc, char **argv); //impaires
+		void	insertionSortVect(std::vector<std::pair<int, int> >& pairs, std::vector<int>& sortVect);
 		void	sortNumberAlgo();
 		void	printResultVector();
-		void	insertionSortVect(std::vector<std::pair<int, int> >& pairs, std::vector<int>& sortVect);
-		void	evenOddNumArgList(int argc, char **argv);
 
-		clock_t	getTimeVector();
-		clock_t getTimeList();
+		/* LIST */
+		void	swapPairsList();
+		void	upFirstOfPairsList();
+		void	evenOddNumArgList(int argc, char **argv); //impaires
+		void	insertionSortList(std::list<std::pair<int, int> >& pairs, std::list<int>& sortVect);
+		void	sortNumberAlgoList();
+		void	printResultList();
 
 		/* UTILS */
-		int safeAtoi(const char* str);
+		clock_t	getVectTime();
+		clock_t	getListTime();
+		int		getArgNumber();
+		void	setArgNumber(int argNum);
+		int		safeAtoi(const char* str);
 
-		class PMException : public std::exception {
+		class PMMException : public std::exception {
 			public:
-				PMException(const char* msg) : _msg(msg) {}
+				PMMException(const char* msg) : _msg(msg) {}
 				const char* what() const throw() {
 					return _msg;
 				}

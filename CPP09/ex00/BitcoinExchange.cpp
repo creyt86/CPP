@@ -6,7 +6,7 @@
 /*   By: creyt <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:44:58 by creyt             #+#    #+#             */
-/*   Updated: 2023/05/02 14:33:40 by creyt            ###   ########.fr       */
+/*   Updated: 2023/05/16 09:24:23 by creyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,8 @@ bool	BitcoinExchange::checkInputValue(std::string line)
 		}
 		std::cout << "Error in the input file : date notre valid " << year << "-" <<  month << "-" << day << std::endl;
 	}
+	else
+		std::cout << "Error : format not valid" << std::endl;
 	return (false);
 }
 
